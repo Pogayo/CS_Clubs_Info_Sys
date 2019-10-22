@@ -1,10 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-
+import Router from './Router';
 import * as firebase from 'firebase';
+import * as serviceWorker from './serviceWorker';
 
 
 var config={
@@ -21,7 +20,7 @@ var config={
 firebase.initializeApp(config);
 firebase.analytics();
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Router/>, document.getElementById('root'));
 
 
 serviceWorker.unregister();
