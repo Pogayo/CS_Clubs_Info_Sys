@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 
 
 var config={
-    apiKey: "API-KEY"
+    apiKey: "API-KEY",
     authDomain: "clubs-info-sys.firebaseapp.com",
     databaseURL: "https://clubs-info-sys.firebaseio.com",
     projectId: "clubs-info-sys",
@@ -17,10 +17,11 @@ var config={
     measurementId: "G-JYHEH9SXK5"
 };
 
-firebase.initializeApp(config);
+var fire=firebase.initializeApp(config);
 firebase.analytics();
 
 ReactDOM.render(<Router/>, document.getElementById('root'));
 
 
 serviceWorker.unregister();
+export default fire;

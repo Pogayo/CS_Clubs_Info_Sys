@@ -1,0 +1,11 @@
+header{
+    border-bottom: 3px solid #543c66;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    right: 0;
+    justify-content: flex-end;
+    padding:20px;
+}
+button{
+}

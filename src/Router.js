@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Signin from './pages/Signin'
+import Home from './pages/Home'
+
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 export default class AppRouter extends Component{
@@ -16,6 +18,8 @@ export default class AppRouter extends Component{
 
                     <Route exact path={"/"} component={App} />
                     <Route path={"/sign-in"} component={Signin} />
+                    <Route path={"/home"} component={Home} />
+
 
 
 
