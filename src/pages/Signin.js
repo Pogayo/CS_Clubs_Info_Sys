@@ -16,6 +16,7 @@ export default class Signin extends Component {
         super(props)
 
         this.state = {
+            displayName:null,
             user: null,
             email: null,
             password: null
@@ -31,8 +32,7 @@ export default class Signin extends Component {
 
     componentDidMount() {
         this.authListener();
-        if (this.state.user) {
-        }
+
     }
     renderRedirect(){
         if (!!firebase.auth().currentUser) {
@@ -47,8 +47,11 @@ export default class Signin extends Component {
         if (e.target.type === "password") {
             this.setState({password: e.target.value})
         } else if (e.target.type === "email") {
-            console.log("Here")
             this.setState({email: e.target.value});
+
+        }
+        else if (e.target.type === "text") {
+            this.setState({displayName: e.target.value});
 
         }
     }
@@ -59,7 +62,8 @@ export default class Signin extends Component {
 
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
-            this.setState({user:u})
+            this.setState({user:u});
+            firebase.auth().currentUser.updateProfile({displayName:this.state.displayName})
             console.log(u);
 
         }).catch((error) => {
@@ -76,22 +80,17 @@ export default class Signin extends Component {
             console.log(user);
             if (user) {
                 this.setState({user});
-                localStorage.setItem('user', user.uid);
-                localStorage.setItem('email', user.email);
 
             } else {
                 this.setState({user: null});
-                localStorage.removeItem('user');
             }
         });
     }
 
     render() {
 
-        // if (this.state.email && this.state.password){
-        // //    route to next page
-        // }
         content = <form style={{width: "100%"}}>
+            <input type="text" placeholder="User Name" required onKeyUp={this.handleChange}/>
             <input type="email" placeholder="Email" required onKeyUp={this.handleChange}/>
             <input type="password" placeholder="Password" required onKeyUp={this.handleChange}/>
             <button className="flex-row-centerAll signin-button" onClick={this.handleNext} type="submit" >Next</button>
@@ -99,7 +98,7 @@ export default class Signin extends Component {
 
         return (
             <div style={styles} className="bg flex-col-centerAll">
-                {this.renderRedirect}
+                {this.renderRedirect()}
                 <div className="sign-in">
                     <h1>CS Clubs </h1>
                     <h5>Sign in</h5>

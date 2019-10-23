@@ -5,13 +5,14 @@ import meeting from "../assets/meeting-icon.png"
 import attendance from "../assets/attendance-icon.png"
 import schedule from "../assets/schedule-icon.png"
 import records from "../assets/records-icon.png"
+import addMember from "../assets/addMember-icon.png"
+
 import {Link} from "react-router-dom"
 
 
 
 
 export default class Home extends Component{
-
 
 
    render (){
@@ -23,6 +24,7 @@ export default class Home extends Component{
                <Link to="/" className="options-element"><img src={schedule} alt="" className="home-icon" />Schedule a meeting</Link>
                <Link  to="/" className="options-element"><img src={attendance} alt="" className="home-icon" />Take attendance</Link>
                <Link  to="/" className="options-element"><img src={records} alt="" className="home-icon" /> View Records</Link>
+               <Link  to="/add-members" className="options-element"><img src={addMember} alt="" className="home-icon" />Add members</Link>
 
            </div>
        </div>);

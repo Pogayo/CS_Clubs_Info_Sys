@@ -8,17 +8,12 @@ import Signin from "./pages/Signin";
 import * as firebase from "firebase"
 import { Redirect } from 'react-router-dom'
 
-
-
-
-
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = ({
       user: null,
     });
-    // this.authListener = this.authListener.bind(this);
   }
 
   render() {

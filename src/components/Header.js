@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import "../css/Header.css"
 import * as firebase from "firebase"
-import {Redirect, useHistory} from 'react-router-dom'
+import {Redirect, } from 'react-router-dom'
 
 
 
@@ -15,9 +15,28 @@ export default class Header extends Component{
 
         this.renderRedirect=this.renderRedirect.bind(this);
         this.signOut=this.signOut.bind(this);
+        this.authListener=this.authListener.bind(this);
 
     }
-   renderRedirect(){
+    componentDidMount() {
+        this.authListener();
+
+    }
+
+    authListener() {
+        firebase.auth().onAuthStateChanged((user) => {
+            console.log("Listening")
+            console.log(user);
+            if (user) {
+                this.setState({redirect:false});
+
+            } else {
+                this.setState({redirect:true});
+            }
+        });
+    }
+
+    renderRedirect(){
 
        console.log("I am here");
         if(this.state.redirect){
@@ -39,13 +58,11 @@ export default class Header extends Component{
 
         return (
             <header>
-                {this.renderRedirect}
+                {this.renderRedirect()}
                 <div style={{marginRight: "auto"}}>CS clubs Info System</div>
                 <div id="user-pic"></div>
-                <div id="user-name"> {localStorage.user}</div>
-                <button id="sign-out" className="" onClick={()=>{
-                    this.signOut();
-                }}>
+                <div id="user-name" > {firebase.auth().currentUser?firebase.auth().currentUser.displayName: ""}</div>
+                <button id="sign-out-button" className="signin-button" onClick={this.signOut}>
                     Sign-out
                 </button>
             </header>)

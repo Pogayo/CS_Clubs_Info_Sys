@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 
 
 var config={
-    apiKey: "API-KEY",
+    apiKey: "API_KEY",
     authDomain: "clubs-info-sys.firebaseapp.com",
     databaseURL: "https://clubs-info-sys.firebaseio.com",
     projectId: "clubs-info-sys",
