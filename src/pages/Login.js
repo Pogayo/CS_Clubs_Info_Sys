@@ -12,7 +12,7 @@ const styles = {
 var content;
 
 
-export default class Signin extends Component {
+export default class Login extends Component {
     constructor(props) {
         super(props)
 

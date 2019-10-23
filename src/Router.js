@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Signin from './pages/Signin'
+import Login from './pages/Login'
 import Home from './pages/Home'
 import AddMembers from './pages/AddMembers'
 
@@ -20,7 +20,7 @@ export default class AppRouter extends Component{
                 <Switch>
 
                     <Route exact path={"/"} component={App} />
-                    <Route path={"/sign-in"} component={Signin} />
+                    <Route path={"/sign-in"} component={Login} />
                     <Route path={"/home"} component={Home} />
                     <Route path={"/add-members"} component={AddMembers} />
 
