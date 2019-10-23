@@ -6,6 +6,10 @@ header{
     right: 0;
     justify-content: flex-end;
     padding:20px;
+    background-color: #543c66;
+    color:White;
+    font-weight:bold;
+
 }
 button{
 }
