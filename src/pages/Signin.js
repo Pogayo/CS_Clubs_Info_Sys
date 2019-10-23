@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import bgImage from "../assets/bgd-img.jpg"
 import '../css/Signin.css';
 import GoogleLogo from '../assets/google-logo.png'
 import * as firebase from "firebase"
@@ -7,7 +6,9 @@ import "../index"
 import { Redirect } from 'react-router-dom'
 
 
-const styles = {};
+const styles = {
+    padding:"30px"
+};
 var content;
 
 
