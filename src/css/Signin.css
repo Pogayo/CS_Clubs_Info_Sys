@@ -110,3 +110,21 @@ input{
     height:150px;
     margin:10px 0;
 }
+
+/*.orCentered {*/
+    /*box-sizing: border-box;*/
+    /*min-width: 200px;*/
+    /*text-align:center; border-bottom: 1px solid #543c66;*/
+    /*line-height:0.1em; margin:10px 0;}*/
+/*.orCentered span {  padding:0 10px; }*/
+.orCentered {margin-top:20px;
+    display:flex;
+}
+.orCentered:before, .orCentered:after {
+    color:white;
+    content:'';
+    flex:1;
+    border-bottom:solid 2px;
+    margin:auto 0.25em;
+    /*box-shadow: 0 -1px ;!* ou 0 1px si border-style:ridge *!*/
+}

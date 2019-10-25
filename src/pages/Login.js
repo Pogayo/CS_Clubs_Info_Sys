@@ -26,7 +26,7 @@ export default class Login extends Component {
         this.handleNext = this.handleNext.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.renderRedirect= this.renderRedirect.bind(this);
-
+        this.signInGoogle=this.signInGoogle.bind(this);
 
 
     }
@@ -74,6 +74,17 @@ export default class Login extends Component {
 
     }
 
+    signInGoogle(){
+        var provider =new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then((result) => {
+            this.setState({user:result.user});
+            console.log("got here")
+            firebase.auth().currentUser.updateProfile({displayName:this.state.displayName})
+            console.log(result.user);
+        }).catch((error) => {
+            alert(error.message)
+        });
+    }
 
     authListener() {
         firebase.auth().onAuthStateChanged((user) => {
@@ -91,7 +102,7 @@ export default class Login extends Component {
     render() {
 
         content = <form style={{width: "100%"}}>
-            <input type="text" placeholder="User Name" required onKeyUp={this.handleChange}/>
+            <input  style={{display:"none"}} type="text" placeholder="User Name" required onKeyUp={this.handleChange}/>
             <input type="email" placeholder="Email" required onKeyUp={this.handleChange}/>
             <input type="password" placeholder="Password" required onKeyUp={this.handleChange}/>
             <button className="flex-row-centerAll signin-button" onClick={this.handleNext} type="submit" >Next</button>
@@ -104,10 +115,13 @@ export default class Login extends Component {
                     <h1>CS Clubs </h1>
                     <h5>Sign in</h5>
                     {content}
-                    <p> or</p>
-                    <button id="sign-in" style={{backgroundColor: "#8E65AD", padding: "0.5px"}}
-                            className="flex-row-centerAll signin-button">
-                        <img src={GoogleLogo} alt="" className="google-logo"/>
+
+                    <div className="orCentered">or </div>
+
+                    <button id="sign-in" style={{backgroundColor: "#8E65AD", padding: "0.5px",margin:"10px 0" }}
+                            className="flex-row-centerAll signin-button"  onClick={this.signInGoogle}>
+                        <img src={GoogleLogo} alt="" className="google-logo"
+                       />
                         <span style={{margin: "auto"}}>Sign in with Google</span></button>
                 </div>
             </div>

@@ -9,6 +9,7 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    font-size:0.9rem;
 }
 
 /* Modal Content/Box */
@@ -18,16 +19,18 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
-    height:80%;
+
 }
 
 /* The Close Button */
 .close {
     color: #aaa;
-    float: right;
-    top:0;
     font-size: 28px;
     font-weight: bold;
+    /*position: relative; !* Stay in place *!*/
+    /*z-index: 1; !* Sit on top *!*/
+    /*right: 0;*/
+    /*top: 0;*/
 }
 
 .close:hover,
@@ -38,14 +41,88 @@
 }
 .link-btn{
     text-decoration: none;
-    display: block;
+    display: inline-block;
     border-style: none;
     border-radius: 0.35rem;
     padding:0.65rem 1rem;
-    color:white;
+    color:black;
     font-size: 16px;
-    background-color: #543c66;
+    background-color: #d1c7db;
+    margin:5px 0;
+
 }
 .link-btn:hover{
-    background-color: #d1c7db;
+    background-color: #543c66;
+    cursor: pointer;
+    outline: 1px solid  #d1c7db ;
+    color:white;
+
 }
+.link-btn:focus{
+}
+.smaller-link-text{
+    font-size: 10px;
+    display:block;
+    margin:10px 0;
+}
+.upload-file{
+    background-color: #d1c7db;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+#add-member-form{
+    padding:10px 20px;
+
+}
+.add-member-input{
+    border:2px solid #543c66;
+    min-width:200px;
+    max-width:350px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*{
+    box-sizing: border-box;
+}
+.add-member-select{
+    width:100%;
+    padding:7px;
+    border-radius: 5px;
+}
+#gender-container{
+    min-width: 200px;
+    max-width: 350px;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 5px;
+    margin-bottom:0;
+    text-align:left;
+}
+
+.gender-sel{
+    display: inline;
+    width:20px;
+}
+
+.orCenteredPurple {
+    margin-top:20px;
+    display:flex;
+    width:320px;
+    box-sizing: border-box;
+
+}
+.orCenteredPurple:before, .orCenteredPurple:after {
+    color:#543c66;
+    content:'';
+    flex:1;
+    border-bottom:solid 2px;
+    margin:auto 0.25em;
+    /*box-shadow: 0 -1px ;!* ou 0 1px si border-style:ridge *!*/
+}
+
+
