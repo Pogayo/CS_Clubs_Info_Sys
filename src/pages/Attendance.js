@@ -1,14 +1,28 @@
 import React, {Component} from 'react';
-import {AttendanceMember} from './AttendanceMember.js'
+import AttendanceMember from './AttendanceMember.js'
+import {Link} from 'react-router-dom';
+import * as firebase from 'firebase';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA9Axkckj4kk1npt9_kYQXPcaxHqwPbTzU",
+  authDomain: "clubs-info-sys.firebaseapp.com",
+  databaseURL: "https://clubs-info-sys.firebaseio.com",
+  projectId: "clubs-info-sys",
+  storageBucket: "clubs-info-sys.appspot.com",
+  messagingSenderId: "755704539890",
+  appId: "1:755704539890:web:497c5bcabb6169f1a3be6b",
+  measurementId: "G-JYHEH9SXK5"
+};
 
 
-class Attendance extends Component{
+
+export default class Attendance extends Component{
 
   constructor(props){
      super(props);
 
      this.state={
-       members:[]
+       members:["Perez Ogayo", "Ogayo, Perez"]
      }
   }
 
@@ -16,45 +30,57 @@ class Attendance extends Component{
     
     const db={}
 
-    db.collection("members").get().then((res)=>{
-     this.setState({members:res.data});
-    }).catch((error)=>{
-      console.log(error);
-    });
+    // db.collection("members").get().then((res)=>{
+    //  this.setState({members:res.data});
+    // }).catch((error)=>{
+    //   console.log(error);
+    // });
   }
 
 
   getMeetings=()=>{
-    let meetings
-    db.collectin().get( (res)=>{
-      meetings=res.data;
-    }
-    ).then((error)=>{
-      console.log("error");
-    }
-    )
+    // let meetings
+    // db.collectin().get( (res)=>{
+    //   meetings=res.data;
+    // }
+    // ).then((error)=>{
+    //   console.log("error");
+    // }
+    // )
 
-    return meetings
+    // return meetings
   }
   render(){
     let  num=0;
-    const list=members.map((member)=>{
+    const list=this.state.members.map((member)=>{
       return <AttendanceMember key={num++} member={member} />
-    }
-    )
-    let options={getMeetings};
+    });
 
-    return(<div> 
-      <div id="attendance-modal">
-        Choose the meeting for which you want to take attendance below
-        <Select>
-          //List of valid meetings
-          //Should add loading for slow connections
-          {options}
-        </Select>
-        Meeting not available?<Link to="" className="link-txt">Create meeting</Link>
-      </div>
+    // let options=this.getMeetings();
+    let options=<option>Abb</option>;
+
+    let date="13/09/2019";
+    let title="Meeting about xyz";
+
+    return(<div className="" style={{padding:"20px"}}> 
+      
+      <h3>Meeting Date: {date}</h3>
+      <h3>Title: {title}</h3>
+     <div className="header-bar"> <span>Name  </span>
+     <span> Status  </span>
+       </div>  
         {list}
        </div>);
   }
 }
+
+{/* <div id="attendance-modal" className="flex-col-centerAll">
+Choose the meeting for which you want to take attendance below
+<select>
+  {/*List of valid meetings
+  //Should add loading for slow connections*/}
+  {/*{options}
+</select>
+Meeting not available?
+<button href="" className="link-txt">Create meeting</button>
+</div> */}
