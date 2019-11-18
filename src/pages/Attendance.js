@@ -3,16 +3,7 @@ import AttendanceMember from './AttendanceMember.js'
 import {Link} from 'react-router-dom';
 import * as firebase from 'firebase';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyA9Axkckj4kk1npt9_kYQXPcaxHqwPbTzU",
-  authDomain: "clubs-info-sys.firebaseapp.com",
-  databaseURL: "https://clubs-info-sys.firebaseio.com",
-  projectId: "clubs-info-sys",
-  storageBucket: "clubs-info-sys.appspot.com",
-  messagingSenderId: "755704539890",
-  appId: "1:755704539890:web:497c5bcabb6169f1a3be6b",
-  measurementId: "G-JYHEH9SXK5"
-};
+
 
 
 
