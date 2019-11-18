@@ -3,7 +3,7 @@ import AttendanceMember from '../components/AttendanceMember.js'
 import Header from "../components/Header"
 import {Link} from 'react-router-dom';
 import * as firebase from 'firebase';
-
+import fbase from  '../FirebaseConfig'
 
 
 
@@ -20,14 +20,32 @@ export default class Attendance extends Component{
 
   componentDidMount(){
     
-    const db={}
 
-    // db.collection("members").get().then((res)=>{
-    //  this.setState({members:res.data});
-    // }).catch((error)=>{
-    //   console.log(error);
-    // });
-  }
+  // db.collection("members").get().then((res)=>{
+  //  this.setState({members:res.data});
+  // }).catch((error)=>{
+  //   console.log(error);
+  // });
+    console.log(fbase);
+
+    let members=[];
+    firebase.firestore().collection.get("members").then((res)=>{
+      let member=[]
+      res.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        member.push(doc.data);
+      });
+      return member
+
+        }
+    ).catch((error)=>{
+      alert(error);
+    });
+
+    if(members)this.setState(members);
+
+}
 
 
   getMeetings=()=>{
