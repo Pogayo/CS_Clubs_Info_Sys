@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import "./create.css";
-
+import Header from "../components/Header"
+import "../css/create.css"
 
 export default class Create extends Component{
   constructor(props){
@@ -91,12 +91,15 @@ export default class Create extends Component{
   render(){
 
     return (
+        <div>
+            <Header/>
     <div id="form-container" className="flex-col-centerAll">
+
       <div>{this.state.message}</div>
-      <form  onSubmit={this.handleSubmit} className="flex-col-centerAll">
+      <form  onSubmit={this.handleSubmit} className="flex-col-centerAll" id="create-form">
       <input value={this.state.title} name="title" type="text" onChange={this.handleChange} placeholder="Event title" required/>
       <input value={this.state.purpose} name="purpose" type="text" onChange={this.handleChange} placeholder="Event Purpose" required/>
-      <select>
+      <select  style={{width:"100%"}}>
         <option>Type of meeting</option>
         <option>Weekly meetup</option>
         <option>Leaders meeting</option>
@@ -113,7 +116,8 @@ export default class Create extends Component{
       <input value={this.state.venue} name="venue" type="text" onChange={this.handleChange} placeholder ="Venue" required/>
       <button type="submit" className="submit-btn" disabled={!this.state.formValid}>Submit</button>
       </form>
-    </div>)
+    </div>
+        </div>)
     ;
   }
 }

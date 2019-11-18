@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "firebase": "^7.2.1",
+    "googleapis": "^39.2.0",
     "papaparse": "^5.1.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
@@ -30,5 +31,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "superagent": "^5.1.0"
   }
 }

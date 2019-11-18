@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import AttendanceMember from './AttendanceMember.js'
+import AttendanceMember from '../components/AttendanceMember.js'
+import Header from "../components/Header"
 import {Link} from 'react-router-dom';
 import * as firebase from 'firebase';
 
@@ -53,14 +54,17 @@ export default class Attendance extends Component{
     let date="13/09/2019";
     let title="Meeting about xyz";
 
-    return(<div className="" style={{padding:"20px"}}> 
+    return(<div >
+     <Header/>
+      <div className="" style={{padding:"20px"}}>
       
-      <h3>Meeting Date: {date}</h3>
+        <h3>Meeting Date: {date}</h3>
       <h3>Title: {title}</h3>
      <div className="header-bar"> <span>Name  </span>
      <span> Status  </span>
        </div>  
         {list}
+      </div>
        </div>);
   }
 }

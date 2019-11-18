@@ -6,18 +6,18 @@ import * as firebase from 'firebase';
 import * as serviceWorker from './serviceWorker';
 
 
-var config={
-    apiKey: "AIzaSyA9Axkckj4kk1npt9_kYQXPcaxHqwPbTzU",
-    authDomain: "clubs-info-sys.firebaseapp.com",
-    databaseURL: "https://clubs-info-sys.firebaseio.com",
-    projectId: "clubs-info-sys",
-    storageBucket: "clubs-info-sys.appspot.com",
-    messagingSenderId: "755704539890",
-    appId: "1:755704539890:web:497c5bcabb6169f1a3be6b",
-    measurementId: "G-JYHEH9SXK5"
+const config = {
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASE_URL,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId:process.env.REACT_APP_APP_ID,
+    measurementId:process.env.REACT_APP_MEASUREMENT_ID
 };
 
-var fire=firebase.initializeApp(config);
+firebase.initializeApp(config);
 firebase.analytics();
 
 ReactDOM.render(<Router/>, document.getElementById('root'));
