@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Header from "../components/Header"
 import "../css/create.css"
+import * as firebase from 'firebase';
 
 export default class Create extends Component{
   constructor(props){
@@ -11,28 +12,18 @@ export default class Create extends Component{
       date:"",
       eventType:"",
       startTime:"13:00",
-      endTime:"",
+      endTime:"13:00",
       venue:"", 
       message:"" , 
       validFields:[],
       formValid:false
     }
   }
-   handleChange=(e)=>{
-     const field=e.target.name;
-     const value=e.target.value
-    
-    this.setState({[field]:value},
-      this.validateField(e,field,value));
-
-    console.log(this.state[e.target.name]);
-
-  }
+   
 
   validateField=(field)=>{
     const currentHour=2
      switch(field){
-       
        case "date":
          const date=new Date();
          const  dateString=date.getMonth+"/" +date.getDate+"/"+ date.getFullYear;
@@ -41,7 +32,6 @@ export default class Create extends Component{
          }
          break
        case "startTime":
-         console.log("We are in")
          if (this.state.startTime< currentHour-24){
           return [0, "You are late"] ;
          }
@@ -63,20 +53,34 @@ export default class Create extends Component{
     validateForm=()=>{
        for(var i=0; i<this.state.validFields.length;i++){
          if(!this.state.validFields[i]){
-           this.setState({validForm:false});
+           this.setState({formValid:false});
            break;
          }
        }
-       this.setState({validForm:true});
+       this.setState({formValid:true});
 
      }
+     handleChange=(e)=>{
+      const field=e.target.name;
+      const value=e.target.value
+     
+     this.setState({[field]:value},
+       this.validateField(e,field,value));
+ 
+     console.log(this.state[e.target.name]);
+     this.validateForm();
+ 
+   }
 
   //Will have to set a listener to clear the message after it has been submitted
 
   handleSubmit=(e)=>{
-    const db={};   //firebase.firestore();
-     e.preventDefaut();
-     db.collection("meetings").set().then((res)=>{
+    const dbRef=firebase.firestore().collection("meetings");
+    if(this.state.formValid){
+    e.preventDefault();
+     console.log("Got here")
+     dbRef.add(
+      this.state).then((res)=>{
       
       this.setState({message:"Your entry was successfuly submitted"})
 
@@ -86,6 +90,7 @@ export default class Create extends Component{
 
      }
      );
+    }
      
   }
   render(){
@@ -111,10 +116,12 @@ export default class Create extends Component{
 
       </select>
       <input value={this.state.date} name="date" type="date" onChange={this.handleChange} placeholder ="Date" required/>
-      <input value={this.state.startTime} name="startTime" type="time" onChange={this.handleChange} placeholder ="Start time" required/>
-      <input value={this.state.endTime} name="endTime" type="time" onChange={this.handleChange} placeholder ="End time" required/>
+      Start time
+      <input value={this.state.startTime} placeholder="Start time" name="startTime" type="time" onChange={this.handleChange} placeholder ="Start time" required/>
+      End time
+      <input value={this.state.endTime} placeholder="End time"name="endTime" type="time" onChange={this.handleChange} placeholder ="End time" required/>
       <input value={this.state.venue} name="venue" type="text" onChange={this.handleChange} placeholder ="Venue" required/>
-      <button type="submit" className="submit-btn" disabled={!this.state.formValid}>Submit</button>
+      <button type="submit" className="submit-btn" disabled={!this.state.formValid} onClick={this.handleSubmit}>Submit</button>
       </form>
     </div>
         </div>)

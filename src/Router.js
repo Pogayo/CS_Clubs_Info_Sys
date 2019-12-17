@@ -7,6 +7,7 @@ import AddMembers from './pages/AddMembers'
 import Schedule from "./pages/Schedule"
 import Attendance from "./pages/Attendance";
 import Create from "./pages/Create.js"
+import ViewRecords from "./pages/ViewRecords"
 
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
@@ -28,6 +29,7 @@ export default class AppRouter extends Component{
                     <Route path={"/take-attendance"} component={Attendance} />
                     <Route path={"/schedule"} component={Schedule} />
                     <Route path={"/add-meeting"} component={Create} />
+                    <Route path={"/view-records"} component={ViewRecords} />
 
 
 
