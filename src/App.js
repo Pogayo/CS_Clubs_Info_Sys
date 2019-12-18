@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './css/Normalize.css';
-import * as firebase from "firebase"
 import { Redirect } from 'react-router-dom'
 
 export default class App extends Component {

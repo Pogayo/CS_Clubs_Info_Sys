@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import App from './App';
 import Login from './pages/Login'
 import Home from './pages/Home'
@@ -9,7 +8,7 @@ import Attendance from "./pages/Attendance";
 import Create from "./pages/Create.js"
 import ViewRecords from "./pages/ViewRecords"
 
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, } from 'react-router-dom';
 
 export default class AppRouter extends Component{
     constructor(props){
@@ -30,11 +29,7 @@ export default class AppRouter extends Component{
                     <Route path={"/schedule"} component={Schedule} />
                     <Route path={"/add-meeting"} component={Create} />
                     <Route path={"/view-records"} component={ViewRecords} />
-
-
-
-
-
+                    
                 </Switch>
             </Router>
 

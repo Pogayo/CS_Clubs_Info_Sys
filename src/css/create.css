@@ -54,8 +54,9 @@ input, select{
   margin-bottom:10px;
   font-size: 14px;
 }
+/* rgba(127,57,140,0.9) */
 .header-bar{
-  background-color: rgba(127,57,140,0.9);
+  background-color: #00b2a9;
   display:grid;
   min-width:200px;
   max-width:700px;
@@ -71,7 +72,7 @@ input, select{
 
 .attendance-select{
 width:180px;
-padding-left:0.2rem;
+padding:0.1rem 0.2rem 0.1rem 0.2rem;
 margin-left:10px;
 border:none;
 border-radius: 0px;
@@ -82,13 +83,13 @@ border-radius: 0px;
   align-items:center;
   min-width:200px;
   max-width:700px;
-  border:1px solid#543c66;
+   border:1px solid#00b2a9; 
   padding-left:10px;
   border-top:0px;
 
 }
 .member-name{
-  border-right:1px solid#543c66;
+  border-right:1px solid#00b2a9;
   height:100%;
   display:flex;
   align-items:center;

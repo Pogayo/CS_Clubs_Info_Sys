@@ -1,5 +1,5 @@
 header{
-    border-bottom: 3px solid #543c66;
+    /* border-bottom: 3px solid #543c66; */
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -7,9 +7,8 @@ header{
     justify-content: flex-end;
     align-items: center;
     padding:20px;
-    background-color: #543c66;
+    background-color: #00b2a9;
     color:White;
-    font-weight:bold;
 
 }
 button{
@@ -28,13 +27,23 @@ button{
 .header-link{
     color:white;
     text-decoration:none;
-    margin-right:10px;
+    margin-right:13px;
 }
-.header-link a{
-   
-    color:yellow;
-    /* max-width: ; */
+.header-link:hover{
+    color:#02353c
+
 }
+.chosen,
+.header-link:active{
+    /* //text-decoration: underline; */
+    color:rgba(127,57,140,1);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    
+
+}
+
+
 #header-content{
    /* display:grid;
    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;

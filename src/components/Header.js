@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import "../css/Header.css"
 import * as firebase from "firebase"
-import {Link} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 import {Redirect, } from 'react-router-dom'
+import logo from "../assets/clubs_logo.png"
 
 
 
@@ -56,14 +57,15 @@ export default class Header extends Component{
         return (
             <header>
                 {this.renderRedirect()}
-                <div style={{marginRight: "auto"}}>CS clubs Info System</div>
+                <NavLink  className="header-link" to="/home" style={{marginRight: "auto", fontWeight:"bold"}}><div >
+                    <img alt="logo" src={logo} style={{width:"100px",height:"70px", display:"none"}}></img> ALU-CS CLUBS IS</div></NavLink>
                 <div id='header-content'>
-                <Link  to="/home" className="header-link">Home</Link>
-                <Link  to="/add-meeting" className="header-link">Add a meeting</Link>
+                <NavLink  to="/home" className="header-link" activeClassName="chosen">HOME</NavLink>
+                <NavLink  to="/add-meeting" className="header-link" activeClassName="chosen">ADD MEETING</NavLink>
                {/* <Link to="/schedule" className="header-link">Schedule a meeting</Link> */}
-               <Link  to="/take-attendance" className="header-link">Take attendance</Link>
-               <Link  to="/view-records" className="header-link"> View Records</Link>
-               <Link  to="/add-members" className="header-link">Add members</Link>
+               <NavLink  to="/take-attendance" className="header-link" activeClassName="chosen">ATTENDANCE</NavLink>
+               <NavLink  to="/view-records" className="header-link" activeClassName="chosen">VIEW RECORDS</NavLink>
+               <NavLink  to="/add-members" className="header-link" activeClassName="chosen">ADD MEMBERS</NavLink>
                 </div>
                 <div id="user-pic"></div>
                 <div id="user-name" > {firebase.auth().currentUser?firebase.auth().currentUser.displayName: ""}</div>
