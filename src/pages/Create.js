@@ -127,9 +127,9 @@ export default class Create extends Component {
       </select>
       <input value={this.state.date} name="date" type="date" onChange={this.handleChange} placeholder ="Date" required/>
       Start time
-      <input value={this.state.startTime} placeholder="Start time" name="startTime" type="time" onChange={this.handleChange} placeholder ="Start time" required/>
+      <input value={this.state.startTime} name="startTime" type="time" onChange={this.handleChange} placeholder ="Start time" required/>
       End time
-      <input value={this.state.endTime} placeholder="End time"name="endTime" type="time" onChange={this.handleChange} placeholder ="End time" required/>
+      <input value={this.state.endTime} name="endTime" type="time" onChange={this.handleChange} placeholder ="End time" required/>
       <input value={this.state.venue} name="venue" type="text" onChange={this.handleChange} placeholder ="Venue" required/>
       <button type="submit" className="submit-btn" disabled={!this.state.formValid} onClick={this.handleSubmit}>Submit</button>
       </form>

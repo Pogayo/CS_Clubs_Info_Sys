@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Header from "../components/Header"
-import {Link} from 'react-router-dom'
 import "../css/AddMembers.css"
 import * as firebase from "firebase"
 import AddUsingCSV from "../components/AddUsingCSV";
@@ -58,7 +57,7 @@ export default class AddMembers extends Component {
             values.push(e.target[i].value);
         }
 
-        for (var i = 0; i < 7; i++) {
+        for (var j = 0; j < 7; j++) {
             saveMember(values);
             this.setState({uploadSuccess:"Member added Successfully"});
 
@@ -155,7 +154,7 @@ function processData(csv) {
 }
 
 function errorHandler(evt) {
-    if (evt.target.error.name == "NotReadableError") {
+    if (evt.target.error.name === "NotReadableError") {
         alert("Canno't read file !");
     }
 }
